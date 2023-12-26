@@ -11,7 +11,7 @@
             string sql = "DELETE FROM clients WHERE id = @id";
             using (SqlCommand cmd = new SqlCommand(sql, connection))
             {
-                cmd.Parameters.AddWithValue("@id", currentId);
+                cmd.Parameters.AddWithValue("@id",  currentId);
                 cmd.ExecuteNonQuery();
             }
         }
