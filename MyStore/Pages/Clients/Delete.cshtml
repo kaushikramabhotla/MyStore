@@ -1,0 +1,25 @@
+﻿@page
+@using System.Data.SqlClient;
+@{
+    string currentId = Request.Query["id"];
+    try
+    {
+        string connectionstring = "Data Source=DESKTOP-1UMKQN7;Initial Catalog=myStore;Integrated Security=True";
+        using (SqlConnection connection = new SqlConnection(connectionstring))
+        {
+            connection.Open();
+            string sql = "DELETE FROM clients WHERE id = @id";
+            using (SqlCommand cmd = new SqlCommand(sql, connection))
+            {
+                cmd.Parameters.AddWithValue("@id", currentId);
+                cmd.ExecuteNonQuery();
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("Exception : " + ex.ToString());
+    }
+
+    Response.Redirect("/Clients/Index");
+}
