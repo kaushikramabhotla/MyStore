@@ -30,7 +30,8 @@ namespace MyStore.Pages.Clients
             //save the client into database
             try
             {
-                string connectionstring = "Data Source=DESKTOP-1UMKQN7;Initial Catalog=myStore;Integrated Security=True";
+                var dbhost = Environment.GetEnvironmentVariable("DB_HOST");
+                string connectionstring = $"Data Source=mystoredb;Initial Catalog=myStore;User ID=sa; Password=testsql@123;";
                 using (SqlConnection connection = new SqlConnection(connectionstring))
                 {
                     connection.Open();

@@ -11,8 +11,10 @@ namespace MyStore.Pages.Clients
         {
             try
             {
-                string connectionString = "Data Source=DESKTOP-1UMKQN7;Initial Catalog=myStore;Integrated Security=True";
-                using(SqlConnection sqlConnection = new SqlConnection(connectionString))
+                var dbhost = Environment.GetEnvironmentVariable("DB_HOST");
+
+                string connectionstring = $"Data Source=mystoredb;Initial Catalog=myStore;User ID=sa; Password=testsql@123;";
+                using (SqlConnection sqlConnection = new SqlConnection(connectionstring))
                 {
                     sqlConnection.Open();
                     string sql = "SELECT * FROM clients";

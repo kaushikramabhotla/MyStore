@@ -1,0 +1,33 @@
+version: '3.4'
+
+networks:
+   mystorenetwork :
+
+
+services:
+  mystoredb: 
+    container_name: App-db
+    image: mcr.microsoft.com/mssql/server
+    ports:
+        - 8002:1433
+    environment: 
+        - ACCEPT_EULA=Y
+        - MSSQL_SA_PASSWORD=testsql@123
+    networks:
+    - mystorenetwork
+  mystore:
+    container_name: App
+    image: ${DOCKER_REGISTRY-}mystore
+    build:
+      context: .
+      dockerfile: MyStore/Dockerfile
+    ports:
+        - 8001:80
+    depends_on: 
+        - mystoredb
+    environment:
+        - DB_HOST=mystoredb
+        - DB_NAME=mystore
+        - DB_SA_PASSWORD=testsql@123 
+    networks:
+    - mystorenetwork
