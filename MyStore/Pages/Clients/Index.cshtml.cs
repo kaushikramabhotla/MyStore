@@ -13,7 +13,7 @@ namespace MyStore.Pages.Clients
             {
                 var dbhost = Environment.GetEnvironmentVariable("DB_HOST");
 
-                string connectionstring = $"Data Source=mystoredb;Initial Catalog=myStore;User ID=sa; Password=testsql@123;";
+                string connectionstring = $"Server==host.docker.internal,1433;Initial Catalog=myStore;User ID=sa; Password=testsql@123;";
                 using (SqlConnection sqlConnection = new SqlConnection(connectionstring))
                 {
                     sqlConnection.Open();
