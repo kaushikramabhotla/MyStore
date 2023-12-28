@@ -14,7 +14,7 @@ namespace MyStore.Pages.Clients
             String currentId = Request.Query["id"];
             var dbhost = Environment.GetEnvironmentVariable("DB_HOST");
 
-            string connectionstring = $"Data Source=mystoredb;Initial Catalog=myStore;User ID=sa; Password=testsql@123;";
+            string connectionstring = $"Server=host.docker.internal,1433;Initial Catalog=myStore;User ID=sa; Password=testsql@123;";
             try
             {
 
@@ -58,7 +58,7 @@ namespace MyStore.Pages.Clients
             {
                 var dbhost = Environment.GetEnvironmentVariable("DB_HOST");
 
-                string connectionstring = $"Data Source=mystoredb;Initial Catalog=myStore;User ID=sa; Password=testsql@123;";
+                string connectionstring = $"Server=host.docker.internal,1433;Initial Catalog=myStore;User ID=sa; Password=testsql@123;";
                 using (SqlConnection conn = new SqlConnection(connectionstring)) 
                 {
                     conn.Open();

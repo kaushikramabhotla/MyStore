@@ -34,7 +34,7 @@ try
 }
 catch (Exception ex)
 {
-    Console.WriteLine($"Error creating database: {ex.Message}");
+    Console.WriteLine($"Error creating database: {ex.Message + "Server na eis"+ connectionString}");
 }
 
 

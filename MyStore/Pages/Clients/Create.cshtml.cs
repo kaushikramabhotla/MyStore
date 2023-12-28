@@ -30,7 +30,7 @@ namespace MyStore.Pages.Clients
             //save the client into database
             try
             {
-                string connectionstring = $"Data Source=mystoredb;Initial Catalog=myStore;User ID=sa; Password=testsql@123;";
+                string connectionstring = $"Server=host.docker.internal,1433;Initial Catalog=myStore;User ID=sa; Password=testsql@123;";
                 using (SqlConnection connection = new SqlConnection(connectionstring))
                 {
                     connection.Open();
