@@ -1,12 +1,12 @@
 version: '3.4'
 
 networks:
-   mystorenetwork :
+   mystorenetwork:
 
 
 services:
   mystoredb: 
-    container_name: App-db
+    container_name: MyStoreApp-db
     image: mcr.microsoft.com/mssql/server
     ports:
         - 8002:1433
@@ -16,7 +16,7 @@ services:
     networks:
     - mystorenetwork
   mystore:
-    container_name: App
+    container_name: MyStoreApp
     image: ${DOCKER_REGISTRY-}mystore
     build:
       context: .
